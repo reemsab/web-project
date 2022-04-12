@@ -18,7 +18,7 @@ if(!isset($_SESSION['id']))
     $con = OpenCon();
     $query = "SELECT * FROM Products";
     $result = mysqli_query($con,$query);
-    
+    echo "testing github";
     if ($result->num_rows > 0)
     {
       
