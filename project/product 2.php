@@ -3,7 +3,7 @@ session_start();
 include("config.php");
 if(!isset($_SESSION['id']))
 {
-   header("Location: index.php");
+   // header("Location: index.php");
 }
 ?>
 
@@ -13,11 +13,10 @@ if(!isset($_SESSION['id']))
     <title>Home</title>
   </head>
    <body>
-<h1> Product Details</h1>
+<h1> Home</h1>
 <?php
     $con = OpenCon();
-    $id = mysqli_real_escape_string($con,$_GET['Id']);
-    $query = "SELECT * FROM Products where Id = '$id'";
+    $query = "SELECT * FROM Products";
     $result = mysqli_query($con,$query);
     
     if ($result->num_rows > 0)
@@ -35,9 +34,8 @@ if(!isset($_SESSION['id']))
     CloseCon($con);
 ?>
             
- <button name="logout" id ="logout"
-    onclick="window.location.href = 'logOut.php';">
-        LogOut
-    </button>         
+ <form name="logout" action="logOut.php" id=logout>
+<input type = "submit" value = "LogOut">
+</form>         
 </body>
 </html>

@@ -5,7 +5,8 @@
 
 <?php
 
-
+//define error dict
+// lets comment
 
 session_start();
 
@@ -53,8 +54,10 @@ else
       <form name="form" action="" method="post">
         <input type="text" id="username" name= "username" placeholder="Enter your username"/>
         <input type="Password"  id="password" name= "password" placeholder="Enter your password"/>
-        <input type = "submit" value = " Submit "/>
+        <input type = "submit" value = "Submit"/>
       </form>
-
+    <form name="logout" action="logOut.php" id=logout>
+<input type = "submit" value = "LogOut">
+</form>
   </body>
   </html>
