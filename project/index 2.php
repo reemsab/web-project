@@ -69,10 +69,7 @@ CloseCon($con);
 
   </form>
 </div>
-<button name="register" id ="register"
-    onclick="window.location.href = 'register.php';">
-        Register
-    </button>
+
 </body>
 </html>
 

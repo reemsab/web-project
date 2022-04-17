@@ -3,7 +3,7 @@ include("config.php");
 //td: add session handler
 if(!isset($_SESSION['adminAccess']))
 {
-    header("Location: admin.php");
+    //header("Location: admin.php");
 } 
  
 ?>
@@ -29,9 +29,8 @@ if ($result->num_rows > 0)
   }}
 CloseCon($con);?>
 </table>
-<button name="logout" id ="logout"
-    onclick="window.location.href = 'logOut.php';">
-        LogOut
-    </button>  
+<form name="logout" action="logOut.php" id=logout>
+<input type = "submit" value = "LogOut">
+</form>
 </body>
 </html>
