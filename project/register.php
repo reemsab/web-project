@@ -21,13 +21,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     if($name == "" ||$email == "" ||$password =="" ||$confpass =="")
     {
         //td: display and report errmsg
-        $err= "all fiels are mandatory";
+        $err= "* all fields are mandatory";
     }
     else if($password != $confpass)
     {
         //td: display and report errmsg
 
-        $err= "your passwords do not match";
+        $err= "* your passwords do not match";
 
     }
     else
@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $result = mysqli_query($con,$query);
         if(mysqli_num_rows($result)==1)
         {
-            $err = "this email is already registered";
+            $err = "* this email is already registered";
         }
         else
         {
@@ -54,15 +54,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
  }
 CloseCon($con);
 ?>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+    </style>
    </head>
    
    <body>
       <form name="form" action="" method="post">
-
-        <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $err; ?></div> 
+        <h3>Registeration</h3>
+        <div class="error" ><?php echo $err; ?></div> 
         <input type="text" for="username" id="username" name= "username" placeholder="Enter your username"/>
 
         <input type="email" for="email" id="email" name= "email" placeholder="Enter your email"/>
+        <br>
         <input type="Password" for="password" id="password" name= "password" placeholder="Enter your password"/>
         <input type="Password" for="confpass" id="confpass" name= "confpass" placeholder="Confirm your password"/>
         <input type = "submit" value = " Submit "/>
