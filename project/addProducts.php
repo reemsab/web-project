@@ -1,17 +1,49 @@
 <?php
+session_start();
 include("config.php");
 //td: add session handler
 if(!isset($_SESSION['adminAccess']))
 {
     header("Location: admin.php");
-} 
+}
+
  //testing commit
+ $con = OpenCon();
+ if($_SERVER["REQUEST_METHOD"] == "POST"){
+ //if(isset($_POST['Add Product'])){
+     $name = mysqli_real_escape_string($con, $_POST['name']);
+     $img = $_FILES['img']['name'];
+     $img_tmp_name = $_FILES['img']['tmp_name'];
+     $img_folder = 'images/'.$img;
+
+
+     $price = $_POST['price'];
+     $quant = $_POST['quant'];
+     $desc = $_POST['desc'];
+     $msg="";
+
+     $search_product = mysqli_query($con, "SELECT * FROM products WHERE name = '$name' ");
+     if($search_product->num_rows > 0 ) {
+        $msg = "Product already added!";
+     }
+     else {
+        $result = mysqli_query($con,"INSERT INTO products (name, photo, price, quantity, description) VALUES ('$name', '$img', '$price', '$quant', '$desc')") or die('query failed');
+        if($result){
+            $msg = "Product Added Successfully!";
+            move_uploaded_file($img_tmp_name, $img_folder);
+        }
+     }
+ }
+
+ //(Id, BookName, photo, price, quantity, BookDescription)
 ?>
+
 <html>
 <head>
 <title> Add Products</title>
-    <script>
 
+<script>
+    
 function addProuductButtonFunc(){
     var flagPro=true;
     var textNamePro=document.querySelector('#name').value;
@@ -19,7 +51,6 @@ function addProuductButtonFunc(){
     var textPricePro=document.querySelector('#price').value;
     var textDescriptionPro=document.querySelector('#desc').value;
     var textQuantityPro=document.querySelector('#quant').value;
-
 
     if(textNamePro==''){
         document.getElementById('NameHint').innerHTML = "please enter product's name";
@@ -53,16 +84,14 @@ function addProuductButtonFunc(){
         document.getElementById('DescriptionHint').innerHTML = '';
     }
     
-
-
 return flagPro;
-
 }
 </script>
+
 </head>
 <body>
 <h1>Add Products</h1>
- <form name="form" onsubmit="return addProuductButtonFunc()" action="" method="post" id="form">
+ <form name="form" onsubmit="return addProuductButtonFunc()" action="" method="post" id="form" enctype="multipart/form-data">
         <input type="text"  id="name" name= "name" placeholder="Enter producct name">
         <span id="NameHint" style="color:red;"></span>
         <input type ="file" id="img" name="img" >
@@ -74,7 +103,8 @@ return flagPro;
         <textarea id = "desc" name ="desc" form="form" placeholder="Enter product descritipn" ></textarea>
         <span id="DescriptionHint" style="color:red;"></span>
         
-        <input type = "submit" value = " Submit ">
+        <input type = "submit" value = "Add Product" name ="Add Product"><br>
+        <p><?php echo $msg; ?></p> 
  </form>
 <button name="logout" id ="logout"
     onclick="window.location.href = 'logOut.php';">

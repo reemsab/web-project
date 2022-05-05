@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("config.php");
 //td: add session handler
 if(!isset($_SESSION['adminAccess']))

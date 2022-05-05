@@ -1,8 +1,12 @@
-<php?
+<?php
+session_start();
+include("config.php");
+//td: add session handler
 if(!isset($_SESSION['adminAccess']))
 {
-    header("Location: admin.php");
-} ?>
+    header("location:admin.php");
+} 
+?>
 
 <html>
 <head>
@@ -10,7 +14,7 @@ if(!isset($_SESSION['adminAccess']))
 <body>
 <h1>Welcome</h1>
 <a href="viewOrders.php"> View Orders</a>
-<a href="addProduct.php"> Add Product</a>
+<a href="addProducts.php"> Add Product</a>
 <button name="logout" id ="logout"
     onclick="window.location.href = 'logOut.php';">
         LogOut
