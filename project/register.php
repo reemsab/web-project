@@ -100,12 +100,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         }
         else
         {
-           $query = "INSERT INTO Users VALUES('$name', '$email', '$password')";
+            $query = "INSERT INTO Users (name, email, password) VALUES('$name', '$email', '$password')";
             $result =mysqli_query($con,$query);
-            header("Location: index.php");
+
+            if($result){
+                header("Location: index.php");
+            }
+            else { $err= "Registeration failed! "; }
 
         }
-    
     
      }
 

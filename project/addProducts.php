@@ -35,7 +35,6 @@ if(!isset($_SESSION['adminAccess']))
      }
  }
 
- //(Id, BookName, photo, price, quantity, BookDescription)
 ?>
 
 <html>
@@ -59,12 +58,12 @@ function addProuductButtonFunc(){
     }else{
         document.getElementById('NameHint').innerHTML = '';
     }
-    if(srcPhoto==''){
+    /*if(srcPhoto==''){
         document.getElementById('PhotoHint').innerHTML = "please enter product's photo";
         flagPro=false;
     }else{
         document.getElementById('PhotoHint').innerHTML = '';
-    }
+    }*/
     if(textPricePro==''){
         document.getElementById('PriceHint').innerHTML = "please enter product's price";
         flagPro=false;
