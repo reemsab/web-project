@@ -15,7 +15,7 @@ if(!isset($_SESSION['adminAccess']))
 function addProuductButtonFunc(){
     var flagPro=true;
     var textNamePro=document.querySelector('#name').value;
-    var srcPhoto=document.querySelector('#img').src;
+    var srcPhoto=document.querySelector('#img').value;
     var textPricePro=document.querySelector('#price').value;
     var textDescriptionPro=document.querySelector('#desc').value;
     var textQuantityPro=document.querySelector('#quant').value;
