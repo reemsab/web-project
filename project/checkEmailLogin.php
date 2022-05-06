@@ -1,12 +1,15 @@
 <?php
-# create database connection
-$connection = mysqli_connect("localhost","root","root","project");
+include("config.php");
+$connection = OpenCon();
 if(($_POST["email"])!="") {
   $q = "SELECT * FROM users WHERE email='" . $_POST["email"] . "'";
   $result = mysqli_query($connection,$q);
   $num = mysqli_num_rows($result);
   if($num==0) {
-    echo "<span style='color:red'> email doesn't exists!</span>";
+    echo "email doesn't exists!";
+  }else{
+    echo "email exists";
   }
-}
+}CloseCon($connection);
+
 ?>
