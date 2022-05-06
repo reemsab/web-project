@@ -62,7 +62,7 @@ function checkEmail() {
     data:'email='+$("#email").val(),
     type: "POST",
     success:function(data){
-        document.getElementById('emailHint').innerHTML = data;
+        document.getElementById('emailHint').value = data;
 
     },
     error:function (){}
@@ -72,19 +72,25 @@ function logInButtonFunc(){
     var flagLogin=true;
     var textELogin=document.querySelector('#email').value;
     var textPLogin=document.querySelector('#password').value;
-    if(textELogin==''){
-        document.getElementById('emailHint').innerHTML = "please enter your email";
-        flagLogin=false;
-
-    }else{
-        document.getElementById('emailHint').innerHTML = '';
-    }
+    
     if(textPLogin==''){
         document.getElementById('passwordHintLogin').innerHTML = "please enter your password";
         flagLogin=false;
     }else{
         document.getElementById('passwordHintLogin').innerHTML = '';
     }
+    if(textELogin==''){
+        document.getElementById('emailHint').innerHTML = "please enter your email";
+        flagLogin=false;
+        return false;
+    }
+    if(((document.getElementById('emailHint').value).match("email doesn't exists!"))){ flagLogin=false;
+        document.getElementById('emailHint').innerHTML="email doesn't exists!"}
+        else{
+        document.getElementById('emailHint').innerHTML = "";
+    }
+   
+    document.getElementById('error').innerHTML ="";
 
 return flagLogin;
 
@@ -96,10 +102,10 @@ return flagLogin;
 
     <div class="container">
       <form name="form" onsubmit="return logInButtonFunc()" action = "" method="post">
-        <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $err; ?></div> 
+        <div style = "font-size:11px; color:#cc0000; margin-top:10px" id="error"><?php echo $err; ?></div> 
        
 
-        <input type="email" for="email" id="email" name= "email" placeholder="Enter your email"/>
+        <input type="email" for="email" id="email" name= "email" placeholder="Enter your email" onInput="checkEmail()"/>
         <span id="emailHint" style="color:red;"></span>
         <input type="Password" for="password" id="password" name= "password" placeholder="Enter your password"/>
         <span id="passwordHintLogin" style="color:red;"></span>
