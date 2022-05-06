@@ -18,6 +18,7 @@ function checkEmail() {
     });
 }
 function registerButtonFunc(){
+
     var flag=true;
     var textn=document.querySelector('#username').value;
     var textE=document.querySelector('#email').value;
@@ -32,20 +33,14 @@ function registerButtonFunc(){
     }else{
         document.getElementById('nameHint').innerHTML = '';     
     }
-    if(textE==''){
-        document.getElementById('emailHint').innerHTML = "please enter your email";
-        flag=false;
-
-    }else if(!(textE.match(emailformat))){
-        document.getElementById('emailHint').innerHTML = "invalid email format";
-        flag=false;
-    }else{
-        document.getElementById('emailHint').innerHTML = '';
-    }
+    
     if(textP==''){
         document.getElementById('passwordHint').innerHTML = "please enter your password";
         flag=false;
-    }else{
+    }else if(textP.length<8){
+        document.getElementById('passwordHint').innerHTML = 'password should be equal or more than 8 character';
+        flag=false;}
+    else{
         document.getElementById('passwordHint').innerHTML = '';
     }
 
@@ -59,6 +54,16 @@ function registerButtonFunc(){
     }else{
         document.getElementById('passwordConfirmHint').innerHTML = '';
     }
+    if(((document.getElementById('emailHint').innerHTML).match("email already exists"))) {flag=false;}
+    if(textE==''){
+        document.getElementById('emailHint').innerHTML = "please enter your email";
+        flag=false;
+
+    }else if(!(textE.match(emailformat))){
+        document.getElementById('emailHint').innerHTML = "invalid email format";
+        flag=false;
+    }
+    document.getElementById('error').innerHTML = "";
 return flag;
 }
 </script>   
@@ -118,10 +123,10 @@ CloseCon($con);
    <body>
       <form name="form" onsubmit="return registerButtonFunc()" action="" method="post">
 
-        <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $err; ?></div> 
+        <div style = "font-size:11px; color:#cc0000; margin-top:10px" id="error"><?php echo $err; ?></div> 
         <input type="text" for="username" id="username" name= "username" placeholder="Enter your username"/>
         <span id="nameHint" style="color:red;"></span>
-        <input type="email" for="email" id="email" name= "email" placeholder="Enter your email"/>
+        <input type="email" for="email" id="email" name= "email" placeholder="Enter your email" onInput="checkEmail()"/>
         <span id="emailHint" style="color:red;"></span>
         <input type="Password" for="password" id="password" name= "password" placeholder="Enter your password"/>
         <span id="passwordHint" style="color:red;"></span>
