@@ -51,6 +51,7 @@ CloseCon($con);
 <!DOCTYPE html>
  <html>
    <head>
+   <link rel="icon" href="images/logonotext.png">
     <title>Login</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -97,20 +98,33 @@ return flagLogin;
    <script type="text/javascript" src="validate.js"></script>
    <body>
 
+<<<<<<< Updated upstream
     <div class="container">
       <form name="form" onsubmit="return logInButtonFunc()" action = "" method="post">
       <h3>Welcome Back!</h3>
+=======
+<div class="container">
+      <form action="" method="POST" name="form" onsubmit="return logInButtonFunc()">
+      <img src="images/Bookfront logo2.png" class="logo">
+      <h3>Login</h3>
+>>>>>>> Stashed changes
         <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $err; ?></div> 
         <input type="email" for="email" id="email" name= "email" placeholder="Enter your email"/>
         <span id="emailHint" class="error"></span>
         <input type="Password" for="password" id="password" name= "password" placeholder="Enter your password"/>
         <span id="passwordHintLogin" class="error"></span>
         
+<<<<<<< Updated upstream
         <input type = "submit" value = "Login "/>
         <br>
         <a href = 'register.php'>
         Don't have an account? Sign up here.
         </a>
+=======
+        <input type = "submit" value = " Login "/>
+        <br><a href='register.php'>Don't have an account? register here!</a>
+        <br><br><a href='admin.php'>Admin? login here!</a>
+>>>>>>> Stashed changes
   </form>
 </div>
 

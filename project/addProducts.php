@@ -6,12 +6,50 @@ if(!isset($_SESSION['adminAccess']))
     header("Location: admin.php");
 } 
  //testing commit
+<<<<<<< Updated upstream
+=======
+ $con = OpenCon();
+ if($_SERVER["REQUEST_METHOD"] == "POST"){
+ //if(isset($_POST['Add Product'])){
+     $name = mysqli_real_escape_string($con, $_POST['name']);
+     $img = $_FILES['img']['name'];
+     $img_tmp_name = $_FILES['img']['tmp_name'];
+     $img_folder = 'images/'.$img;
+
+
+     $price = $_POST['price'];
+     $quant = $_POST['quant'];
+     $desc = $_POST['desc'];
+     $msg="";
+
+     $search_product = mysqli_query($con, "SELECT * FROM products WHERE name = '$name' ");
+     if($search_product->num_rows > 0 ) {
+        $msg = "Product already added!";
+     }
+     else {
+        $result = mysqli_query($con,"INSERT INTO products (name, photo, price, quantity, description) VALUES ('$name', '$img', '$price', '$quant', '$desc')") or die('query failed');
+        if($result){
+            $msg = "Product Added Successfully!";
+            move_uploaded_file($img_tmp_name, $img_folder);
+        }
+     }
+ }
+include("adminmenu.php");
+>>>>>>> Stashed changes
 ?>
 <html>
 <head>
 <title> Add Products</title>
+<<<<<<< Updated upstream
     <script>
 
+=======
+<link rel="stylesheet" href="login.css">
+<link rel="stylesheet" href="menu.css">
+<link rel="icon" href="images/logonotext.png">
+<script>
+    
+>>>>>>> Stashed changes
 function addProuductButtonFunc(){
     var flagPro=true;
     var textNamePro=document.querySelector('#name').value;
@@ -61,25 +99,26 @@ return flagPro;
 </script>
 </head>
 <body>
+<<<<<<< Updated upstream
 <h1>Add Products</h1>
  <form name="form" onsubmit="return addProuductButtonFunc()" action="" method="post" id="form">
         <input type="text"  id="name" name= "name" placeholder="Enter producct name">
+=======
+ <form name="form" onsubmit="return addProuductButtonFunc()" action="" method="post" id="form" enctype="multipart/form-data">
+        <h3>Add Products</h3><br>
+        <input type="text"  id="name" name= "name" placeholder="Enter product name">
+>>>>>>> Stashed changes
         <span id="NameHint" style="color:red;"></span>
         <input type ="file" id="img" name="img" >
         <span id="PhotoHint" style="color:red;"></span>
-        <input type="number" step="0.01" name="price" id ="price" placeholder="Enter producct price" >
+        <input type="number" step="0.01" name="price" id ="price" placeholder="Enter product price" >
          <span id="PriceHint" style="color:red;"></span>
-        <input type=number step=1 id="quant" name="quant" placeholder="Enter producct quantity">
+        <input type=number step=1 id="quant" name="quant" placeholder="Enter product quantity">
         <span id="QuantityHint" style="color:red;"></span>
-        <textarea id = "desc" name ="desc" form="form" placeholder="Enter product descritipn" ></textarea>
+        <textarea id = "desc" name ="desc" form="form" placeholder="Enter product description" ></textarea>
         <span id="DescriptionHint" style="color:red;"></span>
         
         <input type = "submit" value = " Submit ">
  </form>
-<button name="logout" id ="logout"
-    onclick="window.location.href = 'logOut.php';">
-        LogOut
-    </button>  
-
 </body>
 </html>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
  <html>
    <head>
+   <link rel="icon" href="images/logonotext.png">
     <title>Registeration</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -120,9 +121,17 @@ CloseCon($con);
    </head>
    
    <body>
+<<<<<<< Updated upstream
       <form name="form" onsubmit="return registerButtonFunc()" action="" method="post">
         <h3>Sign Up</h3>
         <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $err; ?></div> 
+=======
+ 
+   <form name="form" onsubmit="return registerButtonFunc()" action="" method="post">
+   <img src="images/Bookfront logo2.png" class="logo">
+        <h3>Registeration</h3>
+        <div class="error" ><?php echo $err; ?></div> 
+>>>>>>> Stashed changes
         <input type="text" for="username" id="username" name= "username" placeholder="Enter your username"/>
         <span id="nameHint" class="error"></span>
         <input type="email" for="email" id="email" name= "email" placeholder="Enter your email"/>

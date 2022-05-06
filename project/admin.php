@@ -2,8 +2,13 @@
  <html>
    <head>
     <title>Admin Login</title>
+<<<<<<< Updated upstream
 <script>
 
+=======
+    <link rel="icon" href="images/logonotext.png">
+    <script>
+>>>>>>> Stashed changes
 function logInAdminButtonFunc(){
     var flagLoginAdmin=true;
     var textULoginAdmin=document.querySelector('#username').value;
@@ -55,6 +60,7 @@ else
     echo 'invalid LogIn';
 }
 }
+<<<<<<< Updated upstream
 
 
 
@@ -65,6 +71,8 @@ else
 
 
 
+=======
+>>>>>>> Stashed changes
 ?>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -75,13 +83,28 @@ else
    
    <body>
   
+<<<<<<< Updated upstream
       <form name="form" onsubmit="return logInAdminButtonFunc()" action="" method="post">
         <h3>Admin Login</h3>
+=======
+      <form name="form" action="" method="post" onsubmit="return logInAdminButtonFunc()">
+      <img src="images/Bookfront logo2.png" class="logo">
+          <h3>Admin Login</h3>
+        <label><?php #error report here
+        echo $error?></label>
+>>>>>>> Stashed changes
         <input type="text" id="username" name= "username" placeholder="Enter your username"/>
         <span id="usernameHintLoginAdmin" class="error"></span>
         <input type="Password"  id="password" name= "password" placeholder="Enter your password"/>
+<<<<<<< Updated upstream
         <span id="passwordHintLoginAdmin" class="error"></span>
         <input type = "submit" value = " Submit "/>
+=======
+        <span id="passwordHintLoginAdmin" style="color:red;"></span>
+
+        <input type = "submit" value = " Submit " name="login"/>
+        <br><br><a href='index.php'>Customer? login here!</a>
+>>>>>>> Stashed changes
       </form>
 
   </body>
