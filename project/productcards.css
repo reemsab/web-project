@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
 html { 
-    background: linear-gradient(45deg,#D2CFD1,#ebe8e2) no-repeat center center fixed; 
+    background: linear-gradient(45deg,#D2CFD1,#ebe8e2);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -14,156 +14,101 @@ html {
 }
 /*home page*/
 
+
 body {
-	font-family: "Roboto", sans-serif;
-	height: 100vh;
-	display: flex;
+    margin: 0;
+    font-family: "Roboto",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: .8125rem;
+    font-weight: 400;
+    line-height: 1.5385;
+    color: #333;
+    text-align: left;
+
 }
 
-.hero-container {
-	margin: auto;
+table{
+    margin-left:auto;
+    margin-right: auto;
     max-width: 100vw;
-	display: flex;
-    flex-wrap: wrap;
+    padding-left: 5%;
+    
+}
+td{ 
+max-width: 500px;
+}
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .1875rem;
+    height: 600px;
+    width: fit-content;
 }
 
-.main-container {
-    flex-grow: 1;
-	width: 270px;
-	height: 540px;
-	position: relative;
-	margin: 0 20px;
+.card-img-actions {
+    position: relative;
+}
+.card-body {
+    width: 350px;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1rem;
+    text-align: center;
 }
 
-.cover-container {
-	width: 230px;
-	position: absolute;
-	top: 0;
-	left: 20px;
-	z-index: 9999;
+.card-img{
+    height: 350px;
+    max-width: 250px;
 }
 
-.cover {
-	width: 100%;
-	box-shadow: 0 5px 20px 3px rgba(0, 0, 0, 0.6);
+
+.bg-cart {
+    background-color:orange;
+    color:#fff;
 }
 
-.book-container {
-	background: #fff;
-	width: 270px;
-	height: 520px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	border-radius: 5px;
-	position: absolute;
-	top: 20px;
-	box-shadow: 0 5px 20px 3px rgba(0, 0, 0, 0.6);
-	opacity: 0;
+.bg-cart:hover {
+    
+    color:#fff;
 }
 
-.main-container:hover .book-container {
-	opacity: 1;
-	animation: bounceIn 0.6s linear;
+.bt-details {
+    height: 103px;
+    width: 327px;
+    margin-top: 17px;
+    position: relative;
+    display: inline-block;
+    height: 50px;
+    width: 176px;
+    box-sizing: border-box;
+    border: transparent;
+    border-radius: 60px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #ffffff;
+    background-color: #9cebd5;
+    cursor: pointer;
+    outline: none;
+}
+.bt-details:hover {
+    
+    background-color: #79b0a1;
 }
 
-@keyframes bounceIn {
-	0%,
-	20%,
-	40%,
-	60%,
-	80%,
-	to {
-		-webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-		animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-	}
-	0% {
-		opacity: 0;
-		-webkit-transform: scale3d(0.3, 0.3, 0.3);
-		transform: scale3d(0.3, 0.3, 0.3);
-	}
-	20% {
-		-webkit-transform: scale3d(1.03, 1.03, 1.03);
-		transform: scale3d(1.03, 1.03, 1.03);
-	}
-	40% {
-		-webkit-transform: scale3d(0.9, 0.9, 0.9);
-		transform: scale3d(0.9, 0.9, 0.9);
-	}
-	60% {
-		opacity: 1;
-		-webkit-transform: scale3d(1.01, 1.01, 1.01);
-		transform: scale3d(1.01, 1.01, 1.01);
-	}
-	80% {
-		-webkit-transform: scale3d(0.97, 0.97, 0.97);
-		transform: scale3d(0.97, 0.97, 0.97);
-	}
-	to {
-		opacity: 1;
-		-webkit-transform: scaleX(1);
-		transform: scaleX(1);
-	}
+a{
+
+    text-decoration: none !important;
 }
-
-/* @keyframes bounce {
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-} */
-
-.product__content {
-	width: 100%;
-	position: absolute;
-	bottom: 0;
-	text-align: center;
-}
-
-.product-title {
-	text-transform: uppercase;
-	margin-bottom: 5px;
-}
-
-.product-stock {
-	color: #999;
-	font-size: 0.9rem;
-	margin-bottom: 20px;
-}
-
-.product-price {
-	color: #69c982;
-	font-size: 1.4rem;
-	font-weight: bold;
-}
-
-.product__info-btn {
-	cursor: pointer;
-	width: 100%;
-	background: #2f2f2f;
-	color: white;
-	padding: 15px 0;
-	font-size: 1rem;
-	font-weight: bold;
-	text-transform: uppercase;
-	border: 0;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-}
-
 /*product page*/
-/* 
-* Design by Robert Mayer:https://goo.gl/CJ7yC8
-*
-*I intentionally left out the line that was supposed to be below the subheader simply because I don't like how it looks.
-*
-* Chronicle Display Roman font was substituted for similar fonts from Google Fonts.
-*/
 
   .wrapper {
     height: 420px;
@@ -184,8 +129,10 @@ body {
   
   .product-img img {
     border-radius: 7px 0 0 7px;
+    height: 420px;
     max-width:327px ;
     max-height: 420px;
+    margin-top: auto;
   }
   
   .product-info {
@@ -220,6 +167,7 @@ body {
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
     text-transform: uppercase;
+    text-decoration: underline;
     color: #D1E13C;
     letter-spacing: 0.2em;
   }
@@ -263,7 +211,6 @@ body {
   }
   
   .product-price-btn button {
-    float: right;
     display: inline-block;
     height: 50px;
     width: 176px;
@@ -312,49 +259,142 @@ body {
     display: block;
     padding: 0;
     margin-top: 10px;
-    margin-right: 50px;
+    margin-right: 20px;
     padding-left: 20px;
     border: 1px solid #eee;
   }
-  
+  .quantity p {
+    font-family: 'Suranna', serif;
+    width: 45px;
+    height: 42px;
+    line-height: 1.65;
+    float: right;
+    display: block;
+    padding: 0;
+    margin-top: 20px;
+    margin-right: 50px;
+    padding-left: 20px;
+  }
   .quantity input:focus {
     outline: 0;
   }
   
-  .quantity-nav {
-    float: left;
-    position: relative;
-    height: 42px;
-  }
-  
-  .quantity-button {
-    position: relative;
-    cursor: pointer;
-    border-left: 1px solid #eee;
-    width: 20px;
+/*Cart*/
+.cart{
+    margin: 0;
+    padding: 0;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   .cart-container{
+    width: 70%;
+    height: 85%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 25px 40px #333;
+   }
+
+   .heading{
+    font-size: 20px;
+    font-family: "Roboto";
+    font-weight: 500;
+    color: #2F3841;
     text-align: center;
-    color: #333;
-    font-size: 13px;
-    font-family: "Trebuchet MS", Helvetica, sans-serif !important;
-    line-height: 1.7;
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-  }
-  
-  .quantity-button.quantity-up {
-    position: absolute;
-    height: 50%;
-    top: 0;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .quantity-button.quantity-down {
-    position: absolute;
-    bottom: -1px;
-    height: 50%;
-  }
+    margin-top: 20px;
+
+}
+.Cart-Items{
+    margin: auto;
+    width: 90%;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px; 
+   }
+   .image-box{
+    width: 15%;
+    text-align: center;
+   }
+   .image-box img{
+    max-width: 150px;
+    height: 150px;
+   }
+   .about{
+    height: 100%;
+   }
+   .title{
+    padding-top: 5px;
+    line-height: 10px;
+    font-size: 32px;
+    font-family: "Roboto";
+    font-weight: 300;
+    color: #202020;
+   }
+   .subtitle{
+    line-height: 10px;
+    font-size: 18px;
+    font-family: "Roboto";
+    font-weight: 200;
+    color: #909090;
+   }
+   .prices{
+    height: 100%;
+    text-align: right;
+    padding-top: 20px;
+    font-size: 26px;
+    font-family: "Roboto";
+    font-weight: 200;
+    color: #202020;
+   }
+   hr{
+    width: 66%;
+    float: right;
+    margin-right: 5%;
+   }
+   .checkout{
+    float: right;
+    margin-right: 5%;
+    width: 28%;
+   }
+   .total{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+   }
+   .Subtotal{
+    font-size: 22px;
+    font-family: "Roboto";
+    font-weight: 700;
+    color: #202020;
+   }
+   .items{
+    font-size: 16px;
+    font-family: "Roboto";
+    font-weight: 500;
+    color: #909090;
+    line-height: 10px;
+   }
+   .total-amount{
+    font-size: 36px;
+    font-family: "Roboto";
+    font-weight: 900;
+    float: right;
+    color: #202020;
+   }
+   .checkout-button{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 40px;
+    border: none;
+    background-color: #9cebd5;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Roboto";
+    font-weight: 600;
+    color: #ffffff;
+   }

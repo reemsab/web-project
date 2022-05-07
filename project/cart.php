@@ -5,6 +5,7 @@ if(!isset($_SESSION['id']))
 {
    header("Location: index.php");
 }
+include("customermenu.php")
 ?>
 
 <!DOCTYPE html>
@@ -12,15 +13,17 @@ if(!isset($_SESSION['id']))
     <head>
         <title>Cart</title>
         <link rel="icon" href="images/logonotext.png">
+        <link rel="stylesheet" href="productcards.css">
     </head>
 
     <body>
-        <h2>Shopping Cart</h2>
-        <p> <a href="home.php">home</a> / cart</p>
-        
+    <div class="cart">
+        <div class="cart-container">
+         <h3 class="heading">Shopping Cart</h3>    
         <?php
         $con = OpenCon();
         $grand_total = 0;
+        $quantity_total=0;
 
         $size = count($_SESSION['orders']);
         if($size > 1){
@@ -38,25 +41,38 @@ if(!isset($_SESSION['id']))
                     $prod_price = $result['price'];
                     $sub_total = $prod_quant * $prod_price;
                     $grand_total += $sub_total;
+                    $quantity_total += $prod_quant;
 
-                    echo "<div> Book name: ".$result['name']."</div><br><img src='images/".$result['photo']."' /> <div> quantity: ".$prod_quant ."</div><div> price: ".$sub_total."</div>";
+                    //echo "<div> Book name: ".$result['name']."</div><br><img src='images/".$result['photo']."' /> <div> quantity: ".$prod_quant ."</div><div> price: ".$sub_total."</div>";
+                    echo '<div class="Cart-Items">
+                    <div class="image-box">
+                    <img  src="images/'.$result['photo'].'"/>
+                    </div>
+                    <div class="about">
+                    <h1 class="title">'.$result['name'].'</h1>
+                    <h3 class="subtitle">Quantity: '.$prod_quant.'</h3>
+                    </div>
+                    <div class="prices">'.$sub_total.' SAR</div>
+                    </div>';
                 }
             }      
         }
-        echo "<h3> Total = ".$grand_total." SAR </h3>";
+        echo "<hr><div class='checkout'><div class='total'><div><div class='Subtotal'>Total</div>
+        <div class='items'>".$quantity_total." books</div></div>
+        <div class='total-amount'>".$grand_total."SAR</div></div>";
 
     }
     else {
-        echo "<div> No Products Added </div>";
+        echo "<div class='heading' style='text-decoration:underline;'> No Products Added </div><hr><div class='checkout'>";
     }
 
     ?> 
 
         <form action="" method="POST" name="confirm">
-            <input type='submit' value="Confirm Order" name="confirm_order" />
+            <input type='submit' value="Confirm Order" name="confirm_order" class="checkout-button" />
             <div class="error"> <?php echo $msg ?> </div>
         </form>
-
+        </div>
         <?php
 
         if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -89,6 +105,7 @@ if(!isset($_SESSION['id']))
     CloseCon($con);
         ?>
 
-
+        </div>
+        </div>
     </body>
 </html>

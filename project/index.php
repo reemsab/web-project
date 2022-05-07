@@ -1,6 +1,5 @@
 <?php
 
-
 include("config.php");
 $con = OpenCon();
 if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -13,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     if($email == "" ||$password =="" )
     {
             //td: display and report errmsg
-            $err= "* Both password and  email are mandatory";
+            $err= "both password and  email are mandatory";
     }
     else
     {
@@ -21,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $result = mysqli_query($con,$query);
         if(mysqli_num_rows($result)!=1)
         {
-            $err = "* This email not registered";
+            $err = "this email not registered";
         }
         else
         {
@@ -29,22 +28,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $result =mysqli_query($con,$query);
             if(mysqli_num_rows($result)!=1)
             {
-                $err = "* Wrong email or password";
+                $err = "wrong email or password";
             }
             else
             {
                 $row = mysqli_fetch_array($result);
                 $_SESSION['id'] = $row['Id'];
                 $_SESSION['email'] = $row['email'];
-                $_SESSION['username'] = $row['username'];
-                header("Location: home.php");
+                $_SESSION['username'] = $row['name'];
+                $_SESSION['orders'] = array(array());
+                header("location:home.php");
             }
 
         }
 
     }
-
 }
+
 CloseCon($con);
 ?>
 
@@ -57,74 +57,63 @@ CloseCon($con);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="login.css">
-       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
- <script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
 function checkEmail() {
-    jQuery.ajax({
-    url: "checkEmailLogin.php",
-    data:'email='+$("#email").val(),
-    type: "POST",
-    success:function(data){
-        document.getElementById('emailHint').innerHTML = data;
+   jQuery.ajax({
+   url: "checkEmailLogin.php",
+   data:'email='+$("#email").val(),
+   type: "POST",
+   success:function(data){
+       document.getElementById('emailHint').innerHTML = data;
 
-    },
-    error:function (){}
-    });
+   },
+   error:function (){}
+   });
 }
 function logInButtonFunc(){
-    var flagLogin=true;
-    var textELogin=document.querySelector('#email').value;
-    var textPLogin=document.querySelector('#password').value;
-    if(textELogin==''){
-        document.getElementById('emailHint').innerHTML = "* Please enter your email";
-        flagLogin=false;
+   var flagLogin=true;
+   var textELogin=document.querySelector('#email').value;
+   var textPLogin=document.querySelector('#password').value;
+   if(textELogin==''){
+       document.getElementById('emailHint').innerHTML = "please enter your email";
+       flagLogin=false;
 
-    }else{
-        document.getElementById('emailHint').innerHTML = '';
-    }
-    if(textPLogin==''){
-        document.getElementById('passwordHintLogin').innerHTML = "* Please enter your password";
-        flagLogin=false;
-    }else{
-        document.getElementById('passwordHintLogin').innerHTML = '';
-    }
+   }else{
+       document.getElementById('emailHint').innerHTML = '';
+   }
+   if(textPLogin==''){
+       document.getElementById('passwordHintLogin').innerHTML = "please enter your password";
+       flagLogin=false;
+   }else{
+       document.getElementById('passwordHintLogin').innerHTML = '';
+   }
 
 return flagLogin;
-
 }
+
 </script>
-  </head>
-   <script type="text/javascript" src="validate.js"></script>
+</head>
+  <script type="text/javascript" src="validate.js"></script>
    <body>
 
-<<<<<<< Updated upstream
-    <div class="container">
-      <form name="form" onsubmit="return logInButtonFunc()" action = "" method="post">
-      <h3>Welcome Back!</h3>
-=======
 <div class="container">
       <form action="" method="POST" name="form" onsubmit="return logInButtonFunc()">
       <img src="images/Bookfront logo2.png" class="logo">
       <h3>Login</h3>
->>>>>>> Stashed changes
         <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $err; ?></div> 
+       
+
         <input type="email" for="email" id="email" name= "email" placeholder="Enter your email"/>
-        <span id="emailHint" class="error"></span>
+        <span id="emailHint" style="color:red;"></span>
         <input type="Password" for="password" id="password" name= "password" placeholder="Enter your password"/>
-        <span id="passwordHintLogin" class="error"></span>
+        <span id="passwordHintLogin" style="color:red;"></span>
         
-<<<<<<< Updated upstream
-        <input type = "submit" value = "Login "/>
-        <br>
-        <a href = 'register.php'>
-        Don't have an account? Sign up here.
-        </a>
-=======
         <input type = "submit" value = " Login "/>
         <br><a href='register.php'>Don't have an account? register here!</a>
         <br><br><a href='admin.php'>Admin? login here!</a>
->>>>>>> Stashed changes
   </form>
 </div>
 

@@ -1,15 +1,13 @@
-<php?
+<?php
+session_start();
+include("config.php");
+//td: add session handler
 if(!isset($_SESSION['adminAccess']))
 {
-<<<<<<< Updated upstream
-    header("Location: admin.php");
-} ?>
-=======
     header("location:admin.php");
 } 
 include('adminmenu.php');
 ?>
->>>>>>> Stashed changes
 
 <html>
 <head>
@@ -19,17 +17,7 @@ include('adminmenu.php');
 <title>Dashboard</title>
 </head>
 <body>
-<<<<<<< Updated upstream
-<h1>Welcome</h1>
-<a href="viewOrders.php"> View Orders</a>
-<a href="addProduct.php"> Add Product</a>
-<button name="logout" id ="logout"
-    onclick="window.location.href = 'logOut.php';">
-        LogOut
-    </button>  
-=======
 <h1>Welcome Back Admin!</h1>
 <img src="images/Bookfront logo2.png">
->>>>>>> Stashed changes
 </body>
 </html>

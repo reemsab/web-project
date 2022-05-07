@@ -1,9 +1,11 @@
 <?php
+
 session_start(); 
 include("config.php");
+
 if(!isset($_SESSION['id']))
 {
-    header("Location: index.php");
+  header("Location: index.php");
 }
 include("customermenu.php");
 ?>
@@ -17,15 +19,14 @@ include("customermenu.php");
   </head>
    <body>
 <h1>Home</h1>
+<table>
+  <tr>
 <?php
     $con = OpenCon();
     session_start();
-<<<<<<< Updated upstream
-    echo "Welcome".$_SESSION['username'];
-=======
->>>>>>> Stashed changes
     $query = "SELECT * FROM Products";
     $result = mysqli_query($con,$query);
+    $lineBreak = 0;
     if ($result->num_rows > 0)
     {
       // output data of each row  
@@ -34,45 +35,34 @@ include("customermenu.php");
 
         if($row['quantity']>0)
         {
-<<<<<<< Updated upstream
-            $divStatus = ($row['quantity']<1)? "style='pointer-events: none;opacity: 0.4;'" : "";
-        $prodAlert = ($row['quantity']>0 && $row['quantity']<5)? "<div> Hurry up before its out of stock</div>" : "";
-        echo "<div " .$divStatus. ">" . "<img src = " . $row['photo']. ">" . "<a href='product.php?Id=" . $row['Id']. "'>" .$row['name']." </a>" ."<span> ". $row['price']."</span>" . "<div>".$row['description'] ."</div>".$prodAlert."</div>";
-        }
-=======
         //$divStatus = ($row['quantity']<1)? "style='pointer-events: none;opacity: 0.4;'" : ""; <- what's the point of this?
         $prodAlert = ($row['quantity']>0 && $row['quantity']<5)? "<div> Hurry up before its out of stock</div>" : "";
-        //echo "<div " .$divStatus. ">" . "<img src = 'images/" . $row['photo']. "' /><br>" . "<a href='product.php?Id=" . $row['Id']. "'>" .$row['name']." </a>" ."<br><span> ". $row['price']." SAR </span>" . "<br><div>".$row['description'] ."</div><div>".$row['quantity']." left".$prodAlert."</div>";
-          echo 	'<div class="hero-container">
-          <div class="main-container">
-            <div class="cover-container">
-              <a href="product.php?Id=' . $row['Id']. '"><img src = "images/' . $row['photo'] .  '" class="cover"/></a>
+        if($lineBreak % 3==0){
+          echo '</tr>';
+          echo '<tr>';
+        }  
+        echo 	'<td>
+        <div class="card">
+          <div class="card-body">
+            <div class="card-img-actions">
+              <a href="product.php?Id=' . $row['Id']. '"><img src = "images/' . $row['photo'] .  '" class="card-img img-fluid"/></a>
             </div>
-            <div class="book-container">
-              <div class="product__content">
+            </div>
+            <div class="card-body">
                 <h4 class="product-title">'.$row['name'].'</h4>
                 <p class="product-price"><span> '. $row['price'].' SAR </span></p>
                 <p class="product-stock"> '.$row['quantity'].' left'.$prodAlert.'
                 </p>
-                <a href="product.php?Id=' . $row['Id']. '"><button class="product__info-btn">More...</button></a>
+                <a href="product.php?Id=' . $row['Id']. '"><button class="bt-details">Details</button></a>
               </div>
             </div>
-            </div>
+            </td>
           ';
-
->>>>>>> Stashed changes
-      
+          $lineBreak++;
       }}}
      CloseCon($con);
 ?>
-<<<<<<< Updated upstream
-            
-<button name="logout" id ="logout"
-    onclick="window.location.href = 'logOut.php';">
-        LogOut
-    </button>        
-=======
-
->>>>>>> Stashed changes
+</tr>
+</table>
 </body>
 </html>
